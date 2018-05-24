@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'PostDmarc'
+gem 'PostDmarc', github: 'ZachNusbaum/PostDmarc'
 ```
 
 And then execute:
@@ -22,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Initialize the client with your Postmark DMARC API Token
+client = PostDmarc::Client.new(API_KEY)
+
+# Gets list of DMARC reports for domain
+reports = client.reports
+
+# Gets a single DMARC report by ID
+report = client.report(REPORT_ID)
+
+# Shows the required DNS record
+dns_snippet = client.dns_snippet
+```
 
 ## Development
 
