@@ -27,7 +27,17 @@ Or install it yourself as:
 client = PostDmarc::Client.new(API_KEY)
 
 # Gets list of DMARC reports for domain
+options = { 
+            from_date: 'YYYY-MM-DD',
+            to_date: 'YYYY-MM-DD',
+            limit: '(0..50)',
+            after: REPORT_ID,
+            before: REPORT_ID,
+            reverse: false
+          } # See Postmark API docs for option details
+          
 reports = client.reports
+reports_with_options = client.reports(options)
 
 # Gets a single DMARC report by ID
 report = client.report(REPORT_ID)
