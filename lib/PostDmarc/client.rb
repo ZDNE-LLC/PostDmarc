@@ -18,9 +18,16 @@ class PostDmarc::Client
     path += "&before=#{before}" if before
     path += "&reverse=#{reverse}" if reverse
 
-    connection.get(path)
+    connection.get(path).body
   end
 
+  def report(report_id)
+    connection.get("/records/my/reports/#{report_id}").body
+  end
+
+  def dns_snippet
+    connection.get('/records/my/dns').body
+  end
   private
 
   def connection
